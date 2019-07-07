@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Eventer Android App
 
 <img src="screenshots/eventer_main.png" width="300" align="right" hspace="20">
@@ -41,3 +42,6 @@ Organizers can send custom data notification to participation based on topics.
 ![Demo gif](https://github.com/gulzar1996/eventer-app/blob/master/screenshots/eventer_notification.jpg)
 
 
+=======
+# android-eventer-shannon
+>>>>>>> 0f71105076991756f914389a8e88804eb84e0253
