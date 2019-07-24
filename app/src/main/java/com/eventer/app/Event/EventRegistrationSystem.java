@@ -37,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import java.io.File;
@@ -126,7 +127,7 @@ public class EventRegistrationSystem extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Event event = dataSnapshot.getValue(Event.class);
                         if (event.registers.containsKey(uid)) {
-                            fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_times).actionBar().color(Color.WHITE));
+                            fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_times).actionBar().color(IconicsColor.colorInt(Color.WHITE)));
                             Snackbar snackbar = Snackbar
                                     .make(coordinatorLayout, "Registered Successfully", Snackbar.LENGTH_LONG);
                             snackbar.show();
@@ -134,7 +135,7 @@ public class EventRegistrationSystem extends AppCompatActivity {
                             FirebaseMessaging.getInstance().subscribeToTopic(dataSnapshot.getKey());
                             // add snack bar here
                         } else {
-                            fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_check).actionBar().color(Color.WHITE));
+                            fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_check).actionBar().color(IconicsColor.colorInt(Color.WHITE)));
                             Snackbar snackbar = Snackbar
                                     .make(coordinatorLayout, "Unregistered", Snackbar.LENGTH_LONG);
                             snackbar.setActionTextColor(Color.RED);

@@ -9,12 +9,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.util.Linkify;
 import android.view.MenuItem;
@@ -44,6 +42,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import org.parceler.Parcels;
@@ -207,20 +206,20 @@ public class EventActivity extends EventRegistrationSystem {
         // fab actions
         if (e.userkey.contains(uid)) {
             userIsAdmin = true;
-            fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_shield).actionBar().color(Color.WHITE));
+            fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_shield_alt).actionBar().color(IconicsColor.colorInt(Color.WHITE)));
         } else {
             userIsAdmin = false;
             if (!eventIsToday) {
                 if (e.registers.containsKey(uid)) {
                     userIsRegister = true;
-                    fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_times).actionBar().color(Color.WHITE));
+                    fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_times).actionBar().color(IconicsColor.colorInt(Color.WHITE)));
                     //add snack bar here
                 } else {
-                    fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_check).actionBar().color(Color.WHITE));
+                    fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_check).actionBar().color(IconicsColor.colorInt(Color.WHITE)));
                     // add snack bar here
                 }
             } else {
-                fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_exclamation).actionBar().color(Color.WHITE));
+                fab.setImageDrawable(new IconicsDrawable(getBaseContext(), FontAwesome.Icon.faw_exclamation).actionBar().color(IconicsColor.colorInt(Color.WHITE)));
                 Snackbar snackbar = Snackbar
                         .make(coordinatorLayout, "Registrations closed", Snackbar.LENGTH_LONG);
                 snackbar.show();
@@ -233,22 +232,22 @@ public class EventActivity extends EventRegistrationSystem {
         int maxReg = mEvent.maxReg;
         int minReg = mEvent.minReg;
         if (minReg == 1 && maxReg == 1) {
-            micgroup_orsolo.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_user).actionBar().color(Color.GRAY), null, null);
+            micgroup_orsolo.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_user).actionBar().color(IconicsColor.colorInt(Color.GRAY)), null, null);
             return "Solo";
         } else if (minReg == maxReg) {
-            micgroup_orsolo.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_users).actionBar().color(Color.GRAY), null, null);
+            micgroup_orsolo.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_users).actionBar().color(IconicsColor.colorInt(Color.GRAY)), null, null);
             return "Group of " + maxReg;
         } else {
-            micgroup_orsolo.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_users).actionBar().color(Color.GRAY), null, null);
+            micgroup_orsolo.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_users).actionBar().color(IconicsColor.colorInt(Color.GRAY)), null, null);
             return "Group " + minReg + "-" + maxReg;
         }
     }
 
     private void loadIcons() {
-        micgroup_orsolo.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_user).actionBar().color(Color.GRAY), null, null);
-        mic_winners.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_trophy).actionBar().color(Color.GRAY), null, null);
-        mic_organizer.setCompoundDrawables(null, new IconicsDrawable(this, GoogleMaterial.Icon.gmd_verified_user).actionBar().color(Color.GRAY), null, null);
-        mic_queries.setCompoundDrawables(null, new IconicsDrawable(this, GoogleMaterial.Icon.gmd_forum).actionBar().color(Color.GRAY), null, null);
+        micgroup_orsolo.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_user).actionBar().color(IconicsColor.colorInt(Color.GRAY)), null, null);
+        mic_winners.setCompoundDrawables(null, new IconicsDrawable(this, FontAwesome.Icon.faw_trophy).actionBar().color(IconicsColor.colorInt(Color.GRAY)), null, null);
+        mic_organizer.setCompoundDrawables(null, new IconicsDrawable(this, GoogleMaterial.Icon.gmd_verified_user).actionBar().color(IconicsColor.colorInt(Color.GRAY)), null, null);
+        mic_queries.setCompoundDrawables(null, new IconicsDrawable(this, GoogleMaterial.Icon.gmd_forum).actionBar().color(IconicsColor.colorInt(Color.GRAY)), null, null);
     }
 
     @Override
@@ -283,7 +282,7 @@ public class EventActivity extends EventRegistrationSystem {
 
             new MaterialDialog.Builder(this)
                     .title("Admin Options")
-                    .icon(new IconicsDrawable(this, FontAwesome.Icon.faw_shield).actionBar().color(Color.BLACK))
+                    .icon(new IconicsDrawable(this, FontAwesome.Icon.faw_shield_alt).actionBar().color(IconicsColor.colorInt(Color.BLACK)))
                     .items(adminOption)
                     .itemsCallback(new MaterialDialog.ListCallback() {
                         @Override
@@ -374,7 +373,7 @@ public class EventActivity extends EventRegistrationSystem {
         MaterialDialog dialog =
                 new MaterialDialog.Builder(this)
                         .title(R.string.sendNotification)
-                        .icon(new IconicsDrawable(this, FontAwesome.Icon.faw_envelope_o).actionBar().color(Color.BLACK))
+                        .icon(new IconicsDrawable(this, FontAwesome.Icon.faw_envelope).actionBar().color(IconicsColor.colorInt(Color.BLACK)))
                         .customView(R.layout.dialog_notification_view, true)
                         .positiveText("Send")
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
